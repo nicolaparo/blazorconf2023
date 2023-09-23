@@ -26,4 +26,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Lib\x86\" />
+  </ItemGroup>
+
 </Project>
