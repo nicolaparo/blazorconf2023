@@ -31,17 +31,20 @@
 </div>
 
 <div class="row" style="margin-top: 100px;">
-    <div class="col text-center">
-        <div>
-            <input type="color" class="par-led-color-picker btn btn-light" @oninput="(args) => OnColorPicked(0, args.Value.ToString())" />
 
+    @for(var i = 0; i < 4; i++)
+    {
+        var parIndex = i;
+
+        <div class="col text-center">
+            <div>
+                <input type="color" class="par-led-color-picker btn btn-light" 
+                    @oninput="(args) => OnColorPicked(parIndex, args.Value.ToString())" />
+
+            </div>
         </div>
-    </div>
-    <div class="col text-center">
-        <div>
-            <input type="color" class="par-led-color-picker btn btn-light" @oninput="(args) => OnColorPicked(1, args.Value.ToString())" />
-        </div>
-    </div>
+    }
+
 </div>
 
 
@@ -51,10 +54,10 @@
     {
         var bytes = Convert.FromHexString(htmlColor[1..]);
 
-        static float sqr(float x) => x * x;
-
         if (bytes is not [var red, var green, var blue])
             return;
+
+        static float sqr(float x) => x * x;
 
         red = (byte)(255 * sqr(red / 255f));
         green = (byte)(128 * sqr(green / 255f));
